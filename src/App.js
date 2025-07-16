@@ -17,22 +17,22 @@ function App() {
     <div >
       <BrowserRouter>
         <Navbar></Navbar>
+
         <Routes>
-        //ShopCategory için
+          {/* Shop ve Category routelarım*/}
           <Route path='/' element={<Shop />} />
-          <Route path='/mens' element={<ShopCategory banner= {men_banner} category="men" />} />
+          <Route path='/mens' element={<ShopCategory banner={men_banner} category="men" />} />
           <Route path='/womens' element={<ShopCategory banner={women_banner} category="women" />} />
           <Route path='/kids' element={<ShopCategory banner={kids_banner} category="kid" />} />
-        //product için
-          <Route path='/product' element={<Product />} />
-          <Route path=':/productId' element={<Product />} />
-          <Route />
-        //cart için
+
+          {/* Ürün detay sayfası için */}
+          -  <Route path='/product' element={<Product />} />
+          -  <Route path=':/productId' element={<Product />} />
+          +  <Route path='/product/:productId' element={<Product />} />
+
+          {/* Diğer routelar */}
           <Route path='/cart' element={<Cart />} />
-        //login için
           <Route path='/login' element={<LoginSignUp />} />
-
-
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

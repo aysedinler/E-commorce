@@ -1,18 +1,30 @@
 import React from 'react'
-import "./Breadcrums.css"
-import arrow_icon from "../Assets/breadcrum_arrow.png"
+import { Link } from 'react-router-dom'
 
-const Breadcrums = (props) => {
-    const {products} =props
+/**
+ * Breadcrumbs bileşeni, kendisine gelen `product` objesini kullanarak
+ * sayfa yolunu (breadcrumb) oluşturur.
+ *
+ * Props:
+ *   product: {
+ *     category: string,
+ *     title: string
+ *   }
+ */
+const Breadcrumbs = ({ product }) => {
+  if (!product) return null
+
   return (
-    <div className='breadcrums'>
-        HOME <img src={arrow_icon} alt="" /> 
-        SHOP <img src={arrow_icon} alt="" />
-         {product.category} 
-         <img src={arrow_icon} alt="" /> 
-         {product.name}
-    </div>
+    <nav className="breadcrumbs">
+      <Link to="/">Home</Link>
+      <span> / </span>
+      <Link to={`/category/${product.category}`}>
+        {product.category}
+      </Link>
+      <span> / </span>
+      <span>{product.title}</span>
+    </nav>
   )
 }
 
-export default Breadcrums
+export default Breadcrumbs
